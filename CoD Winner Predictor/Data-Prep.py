@@ -1,5 +1,5 @@
 import csv
-from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif
+from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif, mutual_info_classif
 
 loadoutId = [[],[],[],[]]
 colLabel = []
@@ -74,6 +74,6 @@ def splitData(dataset):
 d1 = inputParser("data-2018-01-14-neworleans.csv")
 splitData(d1)
 
-eliminator = SelectPercentile(f_classif, percentile=30)
+eliminator = SelectPercentile(mutual_info_classif, percentile=30)
 newDataMat = eliminator.fit_transform(dataMat, classLabel)
 print(eliminator.get_support())

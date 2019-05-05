@@ -2,7 +2,12 @@ import csv
 from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif, mutual_info_classif
 from sklearn.naive_bayes import GaussianNB
 
-def nb(colLabels, dataMat, classes):
+def nb(colLabels, dataMat, classes,label):
+    print()
+    print()
+    print("--------- "+label+" ---------")
+    print()
+    print()
     gnb = GaussianNB()
     #print(len(pred))
     fit = gnb.fit(dataMat,classes)

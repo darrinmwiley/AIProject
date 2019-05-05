@@ -4,7 +4,12 @@ from sklearn import tree
 import random
 import graphviz
 
-def dt(colLabels, dataMat, classes):
+def dt(colLabels, dataMat, classes, label, treename):
+    print()
+    print()
+    print("---------- "+label+" ----------")
+    print()
+    print()
     indices = []
     for i in range(len(dataMat)):
         indices.append(i)
@@ -40,4 +45,4 @@ def dt(colLabels, dataMat, classes):
         print("\t"+colLabels[i]+" "+str(imp[i]))
     dot = tree.export_graphviz(clf, out_file=None, feature_names=colLabels, filled = True, rounded = True, class_names = ['L','W'])
     graph = graphviz.Source(dot)
-    graph.render("cod_tree")
+    graph.render(treename)

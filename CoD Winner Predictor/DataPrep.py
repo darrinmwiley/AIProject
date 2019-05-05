@@ -3,9 +3,10 @@ from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif, 
 
 loadoutId = [[],[],[],[]]
 colLabel = []
-colLabelReal = []
 rowId = []
 dataMat = []
+dataRelevant = []
+colLabelRelevent = []
 classLabel = []
 
 def inputParser(filename):
@@ -71,39 +72,30 @@ def splitData(dataset):
             rowId.append(idTemp)
             dataMat.append(dataTemp)
 
-def writeToFile(used):
-    file = open("data-formatted.txt","w")
-    line = "";
+def filter(used):
     for i in range(len(colLabel)-len(rowId[0])):
         if used[i]:
-            line += str(colLabel[i+len(rowId[0])]+",")
-    file.write(line[0:-1])
-    file.write("\n")
+            colLabelRelevent.append(colLabel[i+len(rowId[0])])
     for i in range(len(dataMat)):
-        line = ""
+        dat = []
         for j in range(len(dataMat[i])):
             if(used[j]):
-                line+=(str(dataMat[i][j])+",");
-        file.write(line[0:-1])
-        file.write("\n")
-    file.close()
-    file = open("classes-formatted.txt","w")
-    for x in range(len(classLabel)):
-        file.write(str(classLabel[x]))
-        if x != len(classLabel)-1:
-            file.write(" ")
-    file.close()
+                dat.append(dataMat[i][j])
+        dataRelevant.append(dat)
 
-d1 = inputParser("data-2018-01-14-neworleans.csv")
-splitData(d1)
+def data():
+    d1 = inputParser("data-2018-01-14-neworleans.csv")
+    splitData(d1)
 
-eliminator = SelectPercentile(mutual_info_classif, percentile=30)
-newDataMat = eliminator.fit_transform(dataMat, classLabel)
-used = (eliminator.get_support())
-output = "[";
-for x in range(len(used)):
-    if used[x]:
-        output += colLabel[x+len(rowId[0])]+", "
-print("factors used:")
-print(output[0:-2]+"]")
-writeToFile(used)
+    eliminator = SelectPercentile(mutual_info_classif, percentile=30)
+    newDataMat = eliminator.fit_transform(dataMat, classLabel)
+    used = (eliminator.get_support())
+    output = "[";
+    for x in range(len(used)):
+        if used[x]:
+            output += colLabel[x+len(rowId[0])]+", "
+    print("factors used:")
+    print(output[0:-2]+"]")
+    print()
+    filter(used)
+    return [colLabelRelevent,dataRelevant, classLabel]

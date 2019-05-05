@@ -2,6 +2,7 @@ import csv
 from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif, mutual_info_classif
 from sklearn import tree
 import random
+import graphviz
 
 def dt(colLabels, dataMat, classes):
     indices = []
@@ -27,7 +28,7 @@ def dt(colLabels, dataMat, classes):
     for i in indices[trainsize:]:
         testy.append(classes[i])
 
-    clf = tree.DecisionTreeClassifier()
+    clf = tree.DecisionTreeClassifier(max_depth = 5)
     fit = clf.fit(trainx,trainy)
     pred = fit.predict(testx)
     #print(len(pred))
@@ -37,3 +38,6 @@ def dt(colLabels, dataMat, classes):
     imp = fit.feature_importances_
     for i in range(len(imp)):
         print("\t"+colLabels[i]+" "+str(imp[i]))
+    dot = tree.export_graphviz(clf, out_file=None, feature_names=colLabels, filled = True, rounded = True, class_names = ['L','W'])
+    graph = graphviz.Source(dot)
+    graph.render("cod_tree")

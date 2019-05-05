@@ -87,8 +87,12 @@ def writeToFile(used):
         file.write(line[0:-1])
         file.write("\n")
     file.close()
-
-
+    file = open("classes-formatted.txt","w")
+    for x in range(len(classLabel)):
+        file.write(str(classLabel[x]))
+        if x != len(classLabel)-1:
+            file.write(" ")
+    file.close()
 
 d1 = inputParser("data-2018-01-14-neworleans.csv")
 splitData(d1)

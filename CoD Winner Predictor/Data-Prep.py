@@ -3,6 +3,7 @@ from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif, 
 
 loadoutId = [[],[],[],[]]
 colLabel = []
+colLabelReal = []
 rowId = []
 dataMat = []
 classLabel = []
@@ -70,6 +71,24 @@ def splitData(dataset):
             rowId.append(idTemp)
             dataMat.append(dataTemp)
 
+def writeToFile(used):
+    file = open("data-formatted.txt","w")
+    line = "";
+    for i in range(len(colLabel)-len(rowId[0])):
+        if used[i]:
+            line += str(colLabel[i+len(rowId[0])]+",")
+    file.write(line[0:-1])
+    file.write("\n")
+    for i in range(len(dataMat)):
+        line = ""
+        for j in range(len(dataMat[i])):
+            if(used[j]):
+                line+=(str(dataMat[i][j])+",");
+        file.write(line[0:-1])
+        file.write("\n")
+    file.close()
+
+
 
 d1 = inputParser("data-2018-01-14-neworleans.csv")
 splitData(d1)
@@ -80,5 +99,7 @@ used = (eliminator.get_support())
 output = "[";
 for x in range(len(used)):
     if used[x]:
-        output += colLabel[x]+", "
+        output += colLabel[x+len(rowId[0])]+", "
+print("factors used:")
 print(output[0:-2]+"]")
+writeToFile(used)

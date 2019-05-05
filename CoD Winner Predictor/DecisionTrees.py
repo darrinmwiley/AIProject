@@ -1,7 +1,7 @@
 import csv
 from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif, mutual_info_classif
 from sklearn import tree
-from random import random;
+import random
 
 colLabels = []
 dataMat = []
@@ -43,21 +43,36 @@ def typeConvert(rList):
 
 def dt():
     read()
-    indices = range(len(dataMat))
+    indices = []
+    for i in range(len(dataMat)):
+        indices.append(i)
     random.shuffle(indices)
-    trainsize = int(len(train)*.8)
+    trainsize = int(len(dataMat)*.8)
+    print(trainsize)
 
-    trainx = dataMat[indices[0:trainsize]]
-    trainy = classes[indices[0:trainsize]]
-    testx = dataMat[indices[trainsize+1:]]
-    testy = classes[indices[trainsize+1:]]
-    print(len(dataMat))
-    print(len(trainx)+len(testx))
+    trainx = []
+    trainy = []
+    testx = []
+    testy = []
+
+    for i in indices[0:trainsize]:
+        trainx.append(dataMat[i])
+
+    for i in indices[0:trainsize]:
+        trainy.append(classes[i])
+
+    for i in indices[trainsize:]:
+        testx.append(dataMat[i])
+
+    for i in indices[trainsize:]:
+        testy.append(classes[i])
+
     clf = tree.DecisionTreeClassifier()
-    fit = clf.fit(dataMat,classes)
-    pred = fit.predict(dataMat)
+    fit = clf.fit(trainx,trainy)
+    pred = fit.predict(testx)
     #print(len(pred))
-    acc = sum(1 for i in range(len(pred)) if pred[i] == classes[i])
+    acc = sum(1 for i in range(len(pred)) if pred[i] == testy[i])
     print("accuracy: "+str(acc/len(pred)))
+    print(fit.feature_importances_)
 
 dt()

@@ -1,4 +1,3 @@
-import csv
 from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif, mutual_info_classif
 from sklearn.naive_bayes import GaussianNB
 

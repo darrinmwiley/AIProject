@@ -88,6 +88,7 @@ def data():
     splitData(d1)
 
     eliminator = SelectPercentile(mutual_info_classif, percentile=30)
+    #eliminator = SelectKBest(mutual_info_classif, k=1)
     newDataMat = eliminator.fit_transform(dataMat, classLabel)
     used = (eliminator.get_support())
     output = "[";

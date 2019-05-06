@@ -1,10 +1,7 @@
-import csv
-from sklearn.feature_selection import SelectKBest, SelectPercentile, f_classif, mutual_info_classif
-from sklearn import tree
+from sklearn.svm import SVC
 import random
-import graphviz
 
-def dt(colLabels, dataMat, classes, label, treename):
+def sv(colLabels, dataMat, classes, label):
     print()
     print()
     print("---------- "+label+" ----------")
@@ -33,16 +30,18 @@ def dt(colLabels, dataMat, classes, label, treename):
     for i in indices[trainsize:]:
         testy.append(classes[i])
 
-    clf = tree.DecisionTreeClassifier(max_depth = 5)
-    fit = clf.fit(trainx,trainy)
+    svm = SVC(kernel='linear')
+    fit = svm.fit(trainx,trainy)
     pred = fit.predict(testx)
     #print(len(pred))
     acc = sum(1 for i in range(len(pred)) if pred[i] == testy[i])
     print("accuracy: "+str(acc/len(pred)))
-    print("importances: ")
-    imp = fit.feature_importances_
-    for i in range(len(imp)):
-        print("\t"+colLabels[i]+" "+str(imp[i]))
-    dot = tree.export_graphviz(clf, out_file=None, feature_names=colLabels, filled = True, rounded = True, class_names = ['L','W'])
-    graph = graphviz.Source(dot)
-    graph.render(treename)
+    print("# of support vectors: "+str(len(fit.support_)))
+
+    print('b ='+str(fit.intercept_[0]))
+
+    print("Coefficients: ")
+    cof = fit.coef_
+    for i in range(len(cof[0])):
+        print("\t"+colLabels[i]+" "+str(cof[0][i]))
+    

@@ -1,0 +1,303 @@
+
+
+factors used:
+[kills, deaths, +/-, k/d, kills per 10min, deaths per 10min, kills (stayed alive), num lives, avg time per life (s), hill time (s), scorestreaks kills]
+
+
+
+--------- Naive Bayes for COD data ---------
+
+
+accuracy: 0.688034188034188
+averages for W/L: 
+	kills 27.993589743589745/24.645299145299145
+	deaths 24.645299145299145/27.993589743589745
+	+/- 3.3482905982905984/-3.3482905982905984
+	k/d 1.208803418803419/0.8902136752136753
+	kills per 10min 26.44615384615385/23.021367521367534
+	deaths per 10min 23.022222222222226/26.44594017094018
+	kills (stayed alive) 19.854700854700855/16.228632478632477
+	num lives 25.982905982905983/29.215811965811966
+	avg time per life (s) 23.6138888888889/20.12820512820512
+	hill time (s) 73.16239316239316/53.73076923076923
+	scorestreaks kills 1.2521367521367521/0.5747863247863247
+
+
+
+---------- Support Vector Machine for COD data ----------
+
+
+accuracy: 0.6581196581196581
+# of support vectors: 423
+b =-12.326618765332293
+Coefficients: 
+	kills -0.28323495328254467
+	deaths -0.16222680588862204
+	+/- -0.12100814739459764
+	k/d 0.06631886910226492
+	kills per 10min 0.5472546490154677
+	deaths per 10min -0.28155798178445224
+	kills (stayed alive) -0.0005970283923488751
+	num lives 0.3906298707370297
+	avg time per life (s) 0.24074387536932562
+	hill time (s) 0.02451872405345057
+	scorestreaks kills -0.1250970504369633
+
+
+---------- Decision Tree for COD data ----------
+
+
+accuracy: 0.6752136752136753
+importances: 
+	kills 0.012349896596963417
+	deaths 0.07183569484883655
+	+/- 0.017182854477296908
+	k/d 0.5534696724312353
+	kills per 10min 0.04308443037981206
+	deaths per 10min 0.03812060836242667
+	kills (stayed alive) 0.0
+	num lives 0.04506326395442924
+	avg time per life (s) 0.01861321546205208
+	hill time (s) 0.20028036348694764
+	scorestreaks kills 0.0
+
+
+--------- Random Forest for COD data ---------
+
+
+accuracy: 0.675531914893617
+importances: 
+	kills 0.02227023256658731
+	deaths 0.03194256863283284
+	+/- 0.03305593347391202
+	k/d 0.45768459641567916
+	kills per 10min 0.07190914938776974
+	deaths per 10min 0.09446762494419149
+	kills (stayed alive) 0.035975380761281636
+	num lives 0.025690244249032233
+	avg time per life (s) 0.033964544023777674
+	hill time (s) 0.18207805614604633
+	scorestreaks kills 0.010961669398889535
+
+
+--------- Boosted Trees for COD data ---------
+
+
+accuracy: 0.6861702127659575
+importances: 
+	kills 0.029633222440231567
+	deaths 0.0409822563831985
+	+/- 0.07245074527062197
+	k/d 0.2726956935184121
+	kills per 10min 0.08706943845986373
+	deaths per 10min 0.07073967329812818
+	kills (stayed alive) 0.07444669191823874
+	num lives 0.061213351380861133
+	avg time per life (s) 0.10132711090309925
+	hill time (s) 0.1682763295064118
+	scorestreaks kills 0.021165486920933004
+
+
+--------- League Of Legends Naive Bayes Using Individual Based Data ---------
+
+
+accuracy: 0.7126
+averages for W/L: 
+	spell1Id 7.1094/7.0816
+	spell2Id 6.806/6.8568
+	highestAchievedSeasonTier 2.0178/1.9746
+	kills 6.8638/4.6082
+	deaths 4.6376/6.8836
+	assists 10.3398/6.74
+	doubleKills 0.7392/0.3638
+	tripleKills 0.117/0.0366
+	quadraKills 0.0208/0.0044
+	pentaKills 0.003/0.0008
+	totalDamageDealtToChampions 19041.6124/16109.199
+	totalHeal 6307.711/5036.7016
+	damageSelfMitigated 18309.0476/18643.9772
+	damageDealtToObjectives 10254.7344/4090.9536
+	visionScore 24.1708/21.1884
+	goldEarned 12559.489/10492.2592
+	firstBloodKill 0.1182/0.0792
+	firstTowerKill 0.1118/0.0518
+	creepsPerMinDeltas 3.847080000000004/3.6705584999999954
+	xpPerMinDeltas 421.35067099999947/384.0328211666663
+	csDiffPerMinDeltas 0.1726084999999997/-0.17260849999999966
+	xpPerMinDeltas 421.35067099999947/384.0328211666663
+
+
+
+--------- League Of Legends Decision Tree Using Individual Based Data ---------
+
+
+accuracy: 0.792
+importances: 
+	spell1Id 0.0
+	spell2Id 0.0
+	highestAchievedSeasonTier 0.0
+	kills 0.006339440395686224
+	deaths 0.3006329097779955
+	assists 0.17810571001727646
+	doubleKills 0.0
+	tripleKills 0.0
+	quadraKills 0.0
+	pentaKills 0.0
+	totalDamageDealtToChampions 0.0010305519745138268
+	totalHeal 0.0
+	damageSelfMitigated 0.006970354197965785
+	damageDealtToObjectives 0.46154660706041345
+	visionScore 0.0
+	goldEarned 0.04537442657614866
+	firstBloodKill 0.0
+	firstTowerKill 0.0
+	creepsPerMinDeltas 0.0
+	xpPerMinDeltas 0.0
+	csDiffPerMinDeltas 0.0
+	xpPerMinDeltas 0.0
+
+
+--------- League Of Legends Random Forest Using individual Based Data ---------
+
+
+accuracy: 0.799
+importances: 
+	spell1Id 0.0004798889413921776
+	spell2Id 0.0
+	highestAchievedSeasonTier 0.00022631590709158697
+	kills 0.005161853107696334
+	deaths 0.2909206299624784
+	assists 0.14882648993075703
+	doubleKills 0.0
+	tripleKills 0.0
+	quadraKills 0.0
+	pentaKills 0.0
+	totalDamageDealtToChampions 0.008845525229708716
+	totalHeal 0.002064498054155591
+	damageSelfMitigated 0.008669567737757952
+	damageDealtToObjectives 0.4690110487756486
+	visionScore 0.0018999992821422981
+	goldEarned 0.05240844032521512
+	firstBloodKill 0.0
+	firstTowerKill 0.0
+	creepsPerMinDeltas 0.0038790581243560414
+	xpPerMinDeltas 0.0007812528501321203
+	csDiffPerMinDeltas 0.003157600617709541
+	xpPerMinDeltas 0.0036678311537584967
+
+
+--------- League Of Legends Boosted Trees Using individual Based Data ---------
+
+
+accuracy: 0.823
+importances: 
+	spell1Id 0.006794826105414557
+	spell2Id 0.004654505860760263
+	highestAchievedSeasonTier 0.0051678144954026865
+	kills 0.023659817505038643
+	deaths 0.2247735917754523
+	assists 0.15114028609863736
+	doubleKills 0.0018986565724925927
+	tripleKills 0.0010971509089402931
+	quadraKills 0.0
+	pentaKills 0.0
+	totalDamageDealtToChampions 0.031897218912805364
+	totalHeal 0.02068211374862644
+	damageSelfMitigated 0.03862528222750312
+	damageDealtToObjectives 0.3518847538639235
+	visionScore 0.013362407693647804
+	goldEarned 0.060173805023241586
+	firstBloodKill 0.0006403198823902782
+	firstTowerKill 0.0015703330695832803
+	creepsPerMinDeltas 0.018282199159625014
+	xpPerMinDeltas 0.009758841858092617
+	csDiffPerMinDeltas 0.021651812104349417
+	xpPerMinDeltas 0.012284263134072953
+
+
+--------- League Of Legends Naive Bayes Using Team Based Data ---------
+
+
+accuracy: 0.896
+averages for W/L: 
+	firstBlood 0.591/0.396
+	firstTower 0.667/0.304
+	firstInhibitor 0.828/0.094
+	firstBaron 0.559/0.127
+	firstDragon 0.61/0.354
+	firstRiftHerald 0.359/0.189
+	towerKills 8.831/2.899
+	inhibitorKills 1.98/0.227
+	baronKills 0.716/0.177
+	dragonKills 2.095/0.908
+
+
+
+---------- Support Vector Machine for COD data ----------
+
+
+accuracy: 0.886
+# of support vectors: 417
+b =-1.0007912173877245
+Coefficients: 
+	firstBlood 6.098913757668356e-05
+	firstTower -3.033331008417406e-05
+	firstInhibitor 1.3332056882825718
+	firstBaron 0.0003750400093718298
+	firstDragon 5.96919497404258e-05
+	firstRiftHerald -2.053206211627412e-05
+	towerKills 0.0001773365103190372
+	inhibitorKills 0.6661322067076583
+	baronKills -0.0001772344387784841
+	dragonKills 2.782564494197004e-05
+
+
+--------- League Of Legends Decision Tree Using Team Based Data ---------
+
+
+accuracy: 0.885
+importances: 
+	firstBlood 0.005595124274274642
+	firstTower 0.00569808931205148
+	firstInhibitor 0.022217114574073
+	firstBaron 0.006673608015334755
+	firstDragon 0.0
+	firstRiftHerald 0.002764202594950813
+	towerKills 0.9248420688952893
+	inhibitorKills 0.018553472876745077
+	baronKills 0.006206952003909216
+	dragonKills 0.007449367453371586
+
+
+--------- League Of Legends Random Forest Using Team Based Data ---------
+
+
+accuracy: 0.8975
+importances: 
+	firstBlood 0.0142227152043734
+	firstTower 0.009243564688542576
+	firstInhibitor 0.01362605546399753
+	firstBaron 0.009673861235430955
+	firstDragon 0.013796274739252563
+	firstRiftHerald 0.007888675882881686
+	towerKills 0.006763862153622747
+	inhibitorKills 0.8975112043767162
+	baronKills 0.012665781766463297
+	dragonKills 0.014608004488719104
+
+
+--------- League Of Legends Boosted Trees Using Team Based Data ---------
+
+
+accuracy: 0.83
+importances: 
+	firstBlood 0.014177184021456752
+	firstTower 0.012577384597621203
+	firstInhibitor 0.015525666427998921
+	firstBaron 0.008292438725470912
+	firstDragon 0.009145227161599753
+	firstRiftHerald 0.014079260520589876
+	towerKills 0.005306229949381755
+	inhibitorKills 0.8875904942510445
+	baronKills 0.022129010550473144
+	dragonKills 0.011177103794363265

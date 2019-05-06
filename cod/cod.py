@@ -5,6 +5,7 @@ from cod.DecisionTrees import dt
 from cod.BoostedTrees import boost
 from cod.RandomForest import rf
 from cod.SupportVector import sv
+from cod.NeuralNet import nn
 
 def convertWL(arr):
     ret = []
@@ -23,6 +24,8 @@ def cod():
     classLabel = dat[2]
     nb(colLabel, dataMat, classLabel, "Naive Bayes for COD data")
     sv(colLabel, dataMat, classLabel, "Support Vector Machine for COD data")
+    nn(colLabel, dataMat, classLabel, "Neural Network for COD data")
     dt(colLabel, dataMat, classLabel, "Decision Tree for COD data","cod_tree")
     rf(colLabel, dataMat, convertWL(classLabel), "Random Forest for COD data")
     boost(colLabel, dataMat, convertWL(classLabel), "Boosted Trees for COD data")
+    

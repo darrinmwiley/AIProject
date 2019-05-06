@@ -49,10 +49,11 @@ def splitData(dataset):
         idTemp = []
         dataTemp = []
 
-        if currentLine == 0 and not colLabel:
-            for i in range(len(data)):
-                if not ((i >= 35 and i < 53) or i == 8 or i == 9 or i == 33):
-                    colLabel.append(data[i])
+        if currentLine == 0:
+            if not colLabel:
+                for i in range(len(data)):
+                    if not ((i >= 35 and i < 53) or i == 8 or i == 9 or i == 33):
+                        colLabel.append(data[i])
         else:
             for i in range(len(data)):
                 if i < 8:
@@ -71,6 +72,7 @@ def splitData(dataset):
                     dataTemp.append(data[i])
             rowId.append(idTemp)
             dataMat.append(dataTemp)
+        currentLine += 1
 
 def filter(used):
     for i in range(len(colLabel)-len(rowId[0])):
@@ -85,7 +87,9 @@ def filter(used):
 
 def data():
     d1 = inputParser("data-2018-01-14-neworleans.csv")
+    d2 = inputParser("data-2018-04-01-birmingham.csv")
     splitData(d1)
+    splitData(d2)
 
     eliminator = SelectPercentile(mutual_info_classif, percentile=30)
     #eliminator = SelectKBest(mutual_info_classif, k=1)

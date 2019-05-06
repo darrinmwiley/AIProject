@@ -4,6 +4,7 @@ from league.DecisionTrees import dt
 from league.BoostedTrees import boost
 from league.RandomForest import rf
 import warnings
+from league.SupportVector import sv
 from league.DataPrep import data
 
 
@@ -48,6 +49,7 @@ def league():
     rf(colLabelInd,dataMatInd,classLabelInd,"League Of Legends Random Forest Using individual Based Data")
     boost(colLabelInd,dataMatInd,classLabelInd,"League Of Legends Boosted Trees Using individual Based Data")
     nb(colLabelTeam,dataMatTeam,classLabelTeam,"League Of Legends Naive Bayes Using Team Based Data")
+    sv(colLabelTeam, dataMatTeam, classLabelTeam, "Support Vector Machine for COD data")
     dt(colLabelTeam,dataMatTeam,classLabelTeam,"League Of Legends Decision Tree Using Team Based Data","league-team")
     rf(colLabelTeam,convert2(dataMatTeam),convertWL(classLabelTeam),"League Of Legends Random Forest Using Team Based Data")
     boost(colLabelTeam,convert2(dataMatTeam),convertWL(classLabelTeam),"League Of Legends Boosted Trees Using Team Based Data")

@@ -1,5 +1,5 @@
 # AIProject
-AI project
+AI Class Project, predicting factors to success in Call of Duty and League of Legends
 
 
 
